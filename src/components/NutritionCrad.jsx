@@ -5,7 +5,7 @@ export default function NutritionCard() {
   const goTo = navigateTo();
 
   const handleTrackNowClick = () => {
-    goTo("/food-entry"); // Navighează către pagina dorită
+    goTo("/food-entry");
   };
   return (
     <div className="nutrition-card-container">

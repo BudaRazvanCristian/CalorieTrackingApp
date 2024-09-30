@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../Navbar";
-import FoodEntryCard from "../FoodentryCard";
+import FoodEntryCard from "../FoodEntryCard.jsx";
 import "../styling/food.scss";
 
 export default function FoodEntry() {
