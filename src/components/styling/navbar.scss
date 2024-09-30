@@ -1,0 +1,80 @@
+@import "variables";
+
+// Define a mixin for flexbox alignment
+@mixin flex-center($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+.navbar {
+  @include flex-center(space-between);
+  padding: 2rem 1rem;
+}
+
+.navbar-name {
+  color: $text-color;
+  font-size: $font-size-large;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  padding-left: $padding;
+}
+
+// Navbar links styles
+.navbar-links {
+  list-style: none;
+  @include flex-center(flex-start);
+  font-size: $font-size-small;
+  gap: 1rem;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  // Links styles
+  li {
+    display: flex;
+
+    a {
+      text-decoration: none;
+      color: $text-color;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background-color $transition-time ease;
+
+      &:hover {
+        background-color: $hover-bg-color;
+      }
+    }
+  }
+  .hand-circle {
+    color: $yellow-color;
+    font-size: $font-size-base;
+    font-weight: bold;
+
+    &:hover {
+      background-color: $hover-bg-pro-color;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    @include flex-center(flex-start);
+    font-size: $font-size-small;
+
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    top: 60px;
+    right: -50%;
+    width: 100%;
+  }
+  .navbar-name {
+    padding-left: 18px;
+  }
+}

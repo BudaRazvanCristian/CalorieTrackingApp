@@ -1,0 +1,105 @@
+@import "variables";
+
+.measurement-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $background-color;
+  padding: $padding;
+  border-radius: 40px;
+  width: 300px;
+  height: 240px;
+
+  box-shadow: 0px 4px 12px $box-shadow-color;
+
+  .header-card-container {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: $font-size-small;
+    color: $text-color;
+    padding: 12px;
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 11rem;
+    padding-bottom: 3rem;
+    width: 100%;
+
+    h3 {
+      font-weight: 400;
+      font-size: $font-size-small;
+      margin-bottom: 0;
+    }
+
+    .content-kg-setter {
+      display: flex;
+      align-items: center;
+
+      p {
+        font-size: $font-size-base;
+        font-weight: bold;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      button {
+        font-size: $font-size-medium;
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 50%;
+        border: none;
+        background-color: $button-2-color;
+        cursor: pointer;
+        &:hover {
+          background-color: $button-hover-color;
+        }
+      }
+    }
+
+    .container-hr-measurements {
+      border: none;
+      border-top: 1.5px dashed $hr-color;
+      border-spacing: 2px;
+      width: 100%;
+      padding-bottom: 20px;
+    }
+    .weight-goal-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .weight-details {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font-size: $font-size-small;
+        color: #666;
+      }
+      span {
+        flex: 0;
+      }
+
+      .weight-values {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font-size: $font-size-small;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+@import "variables";
+
+.container-text {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  align-items: flex-start;
+  gap: $gap;
+  margin-top: -10px;
+
+  h1 {
+    font-weight: bold;
+    font-size: 60px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .text-description {
+    p {
+      margin: 2px;
+      font-size: $font-size-base;
+    }
+    .track-button {
+      font-size: $font-size-small;
+      margin-top: $margin-top;
+      width: 10rem;
+      height: 2rem;
+      border-radius: 40px;
+      border: none;
+      background-color: $yellow-color;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding-left: 30px;
+      padding-right: 10px;
+      gap: 10px;
+      cursor: pointer;
+
+      img {
+        width: 16px;
+        height: 16px;
+        // background-color: $yellow-hover-color;
+        // border-radius: 50%;
+        // border-width: 1rem;
+      }
+
+      &:hover {
+        background-color: $yellow-hover-color;
+      }
+    }
+  }
+  .container-reviews {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+  }
+
+  .review-item {
+    margin: 0 40px; /* Spacing between items */
+  }
+
+  .review-count {
+    font-size: 24px; /* Adjust the font size as needed */
+    font-weight: 500; /* Make the count bold */
+  }
+
+  .review-label {
+    font-size: 16px; /* Smaller font size for labels */
+    color: #555; /* Gray color for labels */
+  }
+}
