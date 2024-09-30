@@ -17,7 +17,7 @@ export default function Header() {
         <p>Manage Your Daily Food,</p>
         <p>Track Your Activities</p>
         <p>And Lose Weight Successfully</p>
-        <button class="track-button" onClick={handleTrackNowClick}>
+        <button className="track-button" onClick={handleTrackNowClick}>
           Track now! <img src="/arrow-right-solid.svg" alt="Arrow Right" />
         </button>
       </div>
