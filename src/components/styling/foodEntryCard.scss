@@ -102,6 +102,36 @@
       }
     }
   }
+  .button-container {
+    position: relative; /* Position relative to position the button absolutely */
+    margin: 20px 0; /* Add some margin to space it out */
+  }
+
+  .container-hr-calories {
+    position: relative;
+    border: none;
+    border-top: 1.5px dashed $hr-color;
+    border-spacing: 2px;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+  .center-button {
+    position: absolute;
+    left: 16%;
+    transform: translateX(-50%);
+    top: -10px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 4px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: $primary-hover-color;
+    }
+  }
   .dinner-card {
     .card-details {
       padding: 10px;

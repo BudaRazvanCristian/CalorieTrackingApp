@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Eggs",
+    "calories": 155,
+    "protein": 13,
+    "carbohydrates": 1.1,
+    "fat": 11,
+    "image": "https://example.com/images/eggs.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Whole Milk",
+    "calories": 61,
+    "protein": 3.3,
+    "carbohydrates": 5,
+    "fat": 3.3,
+    "image": "https://example.com/images/milk.jpg"
+  }
+]
