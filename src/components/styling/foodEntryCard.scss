@@ -32,6 +32,9 @@
         text-decoration: underline;
       }
     }
+    button {
+      cursor: pointer;
+    }
   }
 
   .calories-remaining-container {
@@ -149,6 +152,15 @@
         p {
           color: #666;
         }
+      }
+    }
+    .back-button {
+      cursor: pointer;
+      color: $primary-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
