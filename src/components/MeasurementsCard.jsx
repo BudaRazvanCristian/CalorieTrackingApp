@@ -1,7 +1,17 @@
+import { useState } from "react";
 import "./styling/measurementsCard.scss";
 // import LinearDeterminate from "./LinearProgress";
 
 export default function MeasurementsCard() {
+  const [kgMeasure, setKgMeasure] = useState(0);
+
+  const handlePlusButton = () => {
+    setKgMeasure(kgMeasure + 1);
+  };
+  const handleMinusButton = () => {
+    if (kgMeasure > 0) setKgMeasure(kgMeasure - 1);
+  };
+
   return (
     <div className="measurement-card-container">
       <div className="header-card-container">
@@ -11,9 +21,9 @@ export default function MeasurementsCard() {
       <div className="card-content">
         <h3>Weight</h3>
         <div className="content-kg-setter">
-          <button>-</button>
-          <p>54,5 kg</p>
-          <button>+</button>
+          <button onClick={handleMinusButton}>-</button>
+          <p>{kgMeasure} kg</p>
+          <button onClick={handlePlusButton}>+</button>
         </div>
         <hr className="container-hr-measurements" />
 
@@ -23,7 +33,7 @@ export default function MeasurementsCard() {
             <span className="goal-weight-label">Goal Weight</span>
           </div>
           <div className="weight-values">
-            <p className="current-weight-value">54.5 kg</p>
+            <p className="current-weight-value">{kgMeasure} kg</p>
             <p className="goal-weight-value">70 kg</p>
             {/* <LinearDeterminate /> */}
           </div>
