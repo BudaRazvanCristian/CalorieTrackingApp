@@ -4,14 +4,21 @@ import GrassOutlinedIcon from "@mui/icons-material/GrassOutlined";
 import KebabDiningOutlinedIcon from "@mui/icons-material/KebabDiningOutlined";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAppleWhole } from "@fortawesome/free-solid-svg-icons";
+import { navigateTo } from "./NavigationHelper";
 
 export default function RecipesCard() {
+  const goTo = navigateTo();
+
+  const handleProClick = () => {
+    goTo("/plan"); // Navigate to the PRO page
+  };
+
   return (
     <div className="recipes-card-container">
       <div className="header-card-container">
         <span>Recipes</span>
         <a>
-          <button class="pro-button">
+          <button className="pro-button" onClick={handleProClick}>
             Unlock PRO ! <img src="/arrow-right-solid.svg" alt="Arrow Right" />
           </button>
         </a>

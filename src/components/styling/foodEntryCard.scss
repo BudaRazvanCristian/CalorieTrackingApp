@@ -32,6 +32,7 @@
         text-decoration: underline;
       }
     }
+
     button {
       cursor: pointer;
     }
@@ -53,8 +54,8 @@
     .total-calories {
       font-size: 18px;
       font-weight: 500;
-      gap: 100px;
     }
+
     .symbol {
       margin-left: 100px;
       margin-top: -20px;
@@ -65,49 +66,48 @@
       color: #666;
     }
   }
+
+  .meal-card {
+    .card-details {
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .details-calories {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        span {
+          font-weight: 500;
+        }
+
+        p {
+          color: #666;
+        }
+      }
+    }
+  }
+
   .breakfast-card {
-    .card-details {
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .details-calories {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        span {
-          font-weight: 500;
-        }
-        p {
-          color: #666;
-        }
-      }
-    }
+    @extend .meal-card; // Use extend for similar styles
   }
+
   .lunch-card {
-    .card-details {
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .details-calories {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        span {
-          font-weight: 500;
-        }
-        p {
-          color: #666;
-        }
-      }
-    }
+    @extend .meal-card;
   }
+
+  .dinner-card {
+    @extend .meal-card;
+  }
+  .snack-card {
+    @extend .meal-card;
+  }
+
   .button-container {
-    position: relative; /* Position relative to position the button absolutely */
-    margin: 20px 0; /* Add some margin to space it out */
+    position: relative;
+    margin: 20px 0;
   }
 
   .container-hr-calories {
@@ -135,32 +135,107 @@
       background-color: $primary-hover-color;
     }
   }
-  .dinner-card {
-    .card-details {
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
 
-      .details-calories {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        span {
-          font-weight: 500;
-        }
-        p {
-          color: #666;
-        }
-      }
-    }
+  .details-container {
     .back-button {
       cursor: pointer;
       color: $primary-color;
       text-decoration: none;
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      padding: 4px 12px;
+      cursor: pointer;
+      border-radius: 5px;
 
       &:hover {
+        background-color: $primary-hover-color;
         text-decoration: underline;
+      }
+    }
+
+    .food-input {
+      display: flex;
+      position: relative;
+
+      input {
+        width: 100%;
+        height: 30px;
+        border: none;
+        border-radius: 20px;
+        background-color: #f1f1f1;
+        padding-left: 12px;
+        border: solid 1px $hr-color;
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .dropdown {
+        position: absolute;
+        top: 80%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        border: solid 1px $hr-color;
+        border-radius: 10px;
+        max-height: 120px;
+        overflow-y: auto;
+        z-index: 10;
+
+        .dropdown-item {
+          padding: 2px 12px;
+          cursor: pointer;
+          font-size: 11px;
+
+          &:hover {
+            background-color: #f0f0f0;
+          }
+
+          .food-display {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+
+            .food-image {
+              img {
+                width: 20% !important;
+                height: auto !important;
+                object-fit: cover !important;
+              }
+            }
+
+            // .macronutrienti {
+            //   display: flex;
+            //   justify-content: space-around;
+            //   margin-top: 20px;
+
+            //   .nutrient-item {
+            //     display: flex;
+            //     flex-direction: column;
+            //     align-items: center;
+            //     text-align: center;
+
+            //     .value {
+            //       font-size: 18px;
+            //       font-weight: bold;
+            //     }
+
+            //     .label {
+            //       font-size: 14px;
+            //       color: #666;
+            //     }
+            //   }
+            // }
+
+            .food-servings {
+              display: flex;
+              justify-content: space-between;
+            }
+          }
+        }
       }
     }
   }

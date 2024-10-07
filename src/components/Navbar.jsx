@@ -5,7 +5,15 @@ export default function Navbar() {
   const goTo = navigateTo();
 
   const handleTrackNowClick = () => {
-    goTo("/"); // Navighează către pagina dorită
+    goTo("/"); // Navigate to the home page
+  };
+
+  const handleProClick = () => {
+    goTo("/plan"); // Navigate to the PRO page
+  };
+
+  const handleAboutClick = () => {
+    goTo("/about"); // Navigate to the PRO page
   };
   return (
     <nav className="navbar">
@@ -14,18 +22,16 @@ export default function Navbar() {
       </div>
       <ul className="navbar-links">
         <li>
-          <a href="#home" onClick={handleTrackNowClick}>
-            Home
-          </a>
+          <a onClick={handleTrackNowClick}>Home</a>
         </li>
         <li>
-          <a href="#about">About</a>
+          <a onClick={handleAboutClick}>About</a>
         </li>
         <li>
           <a href="#services">Contact</a>
         </li>
         <li>
-          <a className="hand-circle" href="#pro">
+          <a className="hand-circle" onClick={handleProClick}>
             PRO
           </a>
         </li>

@@ -21,7 +21,7 @@ export default function Header() {
           Track now! <img src="/arrow-right-solid.svg" alt="Arrow Right" />
         </button>
       </div>
-      <hr className="container-hr" />
+      <hr className="container-hr-home" />
       <div className="container-reviews">
         <div className="review-item">
           <span className="review-count">4 mln +</span>

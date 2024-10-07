@@ -1,0 +1,149 @@
+@import "variables";
+
+.about-us-container {
+  // Styles for the overall container
+  padding: 40px; // Increased padding for better spacing
+  max-width: 1200px; // Added a max-width for larger screens
+  margin: 0 auto; // Center the container
+  background-color: #ffffff; // Added background for contrast
+  border-radius: 15px; // Smoother corners
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); // Added subtle shadow
+}
+
+.about-us-hero-section {
+  // Styles for the hero section
+  background-color: #f9f9f9;
+  padding: 30px; // Increased padding
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 30px; // Space below hero section
+  transition: background-color 0.3s ease; // Smooth background transition on hover
+
+  &:hover {
+    background-color: #f0f0f0; // Lighten on hover
+  }
+
+  h1 {
+    font-size: 2.5rem; // Increased font size
+    color: $primary-color;
+    margin-bottom: 10px; // Spacing below title
+    font-weight: bold; // Bold title
+  }
+
+  p {
+    font-size: 1.3rem; // Slightly larger font
+    color: $text-color;
+  }
+}
+
+.about-us-content {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0;
+  gap: 20px; // Added gap for spacing between columns
+
+  .about-us-text-content {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd; // Keeps the border for separation
+    border-radius: 15px; // Slightly more rounded corners
+    background-color: #f4f9fc; // Light blue background for freshness
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+    transition: transform 0.3s ease, box-shadow 0.3s ease; // Smooth transition
+
+    // Adding hover effect for interaction
+    &:hover {
+      transform: translateY(-5px); // Lift effect on hover
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); // Stronger shadow on hover
+    }
+
+    h2 {
+      font-size: 2rem; // Increased font size for the heading
+      color: $primary-color; // Primary color for headings
+      margin-bottom: 15px; // Space below the heading
+      text-transform: uppercase; // Uppercase for emphasis
+      letter-spacing: 1px; // Increased letter spacing
+    }
+
+    p {
+      font-size: 1.2rem; // Consistent font size
+      line-height: 1.6; // Increased line height for better readability
+      color: #333; // Darker text for contrast
+      margin-bottom: 20px; // Space below paragraph
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+
+      li {
+        margin-bottom: 12px; // Spacing between list items
+        font-size: 1rem; // Standard font size for list items
+
+        b {
+          color: $primary-color; // Emphasize key terms with primary color
+        }
+      }
+    }
+  }
+
+  .about-us-image-content {
+    flex: 1;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease; // Transition effect on hover
+
+      &:hover {
+        transform: scale(1.05); // Scale image on hover
+      }
+    }
+  }
+}
+
+.about-us-team-section {
+  margin-top: 40px;
+  text-align: center;
+
+  h2 {
+    font-size: 2rem; // Increased team section title size
+    margin-bottom: 20px; // Space below title
+  }
+
+  p {
+    font-size: 1.2rem; // Uniform size for team description
+    color: $text-color;
+    margin-bottom: 30px; // Space below description
+  }
+
+  .about-us-team-images {
+    display: flex;
+    justify-content: center;
+    gap: 15px; // Spacing between team member images
+
+    img {
+      margin: 0;
+      border-radius: 50%;
+      width: 100px; // Fixed size for team images
+      height: 100px; // Fixed size for team images
+      transition: transform 0.3s ease; // Transition for hover effect
+
+      &:hover {
+        transform: scale(1.1); // Scale up on hover
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); // Shadow on hover
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about-us-container {
+    padding-left: 30px;
+    .about-us-content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

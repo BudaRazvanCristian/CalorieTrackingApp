@@ -1,6 +1,5 @@
 @import "variables";
 
-// Define a mixin for flexbox alignment
 @mixin flex-center($justify: center, $align: center) {
   display: flex;
   justify-content: $justify;
@@ -64,7 +63,6 @@
   .navbar-links {
     @include flex-center(flex-start);
     font-size: $font-size-small;
-
     margin: 0;
     position: absolute;
     left: 50%;
@@ -73,6 +71,7 @@
     top: 60px;
     right: -50%;
     width: 100%;
+    padding-top: 10px;
   }
   .navbar-name {
     padding-left: 18px;

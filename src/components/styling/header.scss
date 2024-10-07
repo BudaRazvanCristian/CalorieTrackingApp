@@ -70,3 +70,17 @@
     color: #555; /* Gray color for labels */
   }
 }
+
+@media (max-width: 768px) {
+  .container-text {
+    display: flex;
+
+    .container-reviews {
+      font-size: $font-size-small;
+      padding-bottom: 30px;
+      .review-item {
+        margin: 0 20px;
+      }
+    }
+  }
+}

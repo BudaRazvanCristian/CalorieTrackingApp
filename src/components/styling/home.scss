@@ -12,7 +12,7 @@ body {
   padding: 30px;
   // gap: 24rem;
 
-  .container-hr {
+  .container-hr-home {
     border: none;
     border-top: 3px dashed $hr-color;
     border-spacing: 5px;
@@ -33,5 +33,27 @@ body {
     flex-direction: row;
     gap: 40px;
     margin-left: -80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    display: block;
+
+    .container-hr-home {
+      width: 100%;
+      margin-left: 0;
+    }
+    .container-cards {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4rem;
+    }
+    .lower-cards-wrapper {
+      display: contents;
+      gap: 4rem;
+      padding-left: 20px;
+    }
   }
 }
