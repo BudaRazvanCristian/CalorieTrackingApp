@@ -1,8 +1,11 @@
 import "./styling/progressCard.scss";
 import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge";
 import { navigateTo } from "./NavigationHelper";
+import { useContext } from "react";
+import { CalorieContext } from "./CalorieContext";
 
 export default function ProgressCard() {
+  const { remainingCalories } = useContext(CalorieContext);
   const goTo = navigateTo();
 
   const handleTrackNowClick = () => {
@@ -16,7 +19,7 @@ export default function ProgressCard() {
       </div>
       <div className="card-content">
         <Gauge
-          value={35}
+          value={remainingCalories}
           startAngle={-110}
           endAngle={110}
           sx={{

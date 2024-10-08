@@ -1,0 +1,85 @@
+@import "variables";
+.contact-container {
+  .container-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      font-weight: bold;
+      font-size: $font-size-large;
+    }
+    p {
+      max-width: 560px;
+      margin-top: 10px;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #333;
+      text-align: center;
+    }
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+
+    .name {
+      display: flex;
+      gap: 40px;
+    }
+    .email {
+      label {
+        width: 680px;
+      }
+    }
+
+    .phone {
+      display: flex;
+      justify-content: flex-start;
+      margin-left: -360px;
+      .phone-input {
+        display: flex;
+        flex-direction: row;
+        width: 700px;
+
+        select {
+          width: 200px;
+          border: none;
+          background-color: transparent;
+          font-size: 16px;
+          padding-right: 5px;
+        }
+
+        input {
+          border: 1px solid #ccc;
+          padding-left: 5px;
+          font-size: 16px;
+          width: 800px;
+        }
+
+        //   select {
+        //     font-size: 16px;
+        //     padding-right: 0;
+        //   }
+      }
+    }
+    .message {
+      display: flex;
+      width: 680px;
+      input {
+        width: 680px;
+      }
+    }
+    .form-button {
+      border-radius: 8px;
+      width: 500px;
+      height: 40px;
+      border: none;
+      background-color: #333;
+      color: white;
+      margin-top: 10px;
+    }
+  }
+}

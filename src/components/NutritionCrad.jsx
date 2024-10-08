@@ -18,18 +18,18 @@ export default function NutritionCard() {
       <div className="card-content">
         <section className="content-nutrition">
           <div className="meal">
+            <span>Breakfast</span>
+            <span className="calories">374 kcal</span>
+          </div>
+          <hr className="container-hr-nutrition" />
+          <div className="meal">
             <span>Lunch</span>
-            <span className="calories">374/700 kcal</span>
+            <span className="calories">374 kcal</span>
           </div>
           <hr className="container-hr-nutrition" />
           <div className="meal">
             <span>Dinner</span>
-            <span className="calories">374/700 kcal</span>
-          </div>
-          <hr className="container-hr-nutrition" />
-          <div className="meal">
-            <span>Snacks</span>
-            <span className="calories">374/700 kcal</span>
+            <span className="calories">374 kcal</span>
           </div>
           <hr className="container-hr-nutrition" />
         </section>

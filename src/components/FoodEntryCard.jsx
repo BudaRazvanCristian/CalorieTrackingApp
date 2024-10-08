@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "./styling/foodEntryCard.scss";
 import GoalSetterComponent from "./GoalSetterComponent";
 import "./styling/goalSetter.scss";
+import { useContext } from "react";
+import { CalorieContext } from "./CalorieContext";
 
 const FoodType = {
   BREAKFAST: "Breakfast",
@@ -18,6 +20,10 @@ export default function FoodEntryCard() {
   const [filteredData, setFilteredData] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [goalCalories, setGoalCalories] = useState(null);
+  const [servingSize, setServingSize] = useState(100); // State for serving size as a number
+  const [servings, setServings] = useState(1); // State for servings
+  const { remainingCalories, setRemainingCalories } =
+    useContext(CalorieContext);
 
   useEffect(() => {
     fetch("/listOfFood.json")
@@ -37,12 +43,25 @@ export default function FoodEntryCard() {
     }
   }, [searchTerm, foodData]);
 
+  useEffect(() => {
+    console.log("Remaining Calories:", remainingCalories); // Should show 0 initially or updated value
+  }, [remainingCalories]);
+
+  useEffect(() => {
+    const totalCalories = 1200; // Replace with actual value
+    const goalCalories = 1000; // Replace with actual goal
+    setRemainingCalories(totalCalories - goalCalories); // Update remaining calories
+  }, [setRemainingCalories]);
+  console.log("Remaining Calories:", remainingCalories); // Add this in FoodEntryCard
+
   const handleAddMoreClick = () => setShowDetails(true);
   const handleBackClick = () => setShowDetails(false);
   const handleFoodItemClick = (food) => {
     setSelectedFood(food);
     setSearchTerm("");
     setFilteredData([]);
+    setServingSize(100); // Reset serving size to 100g when selecting food
+    setServings(1); // Reset servings to 1 when selecting food
   };
 
   const handleShowForm = () => setShowForm(!showForm);
@@ -121,7 +140,7 @@ export default function FoodEntryCard() {
               <div className="calories-target">Food</div>
             </div>
             <div className="calories-item">
-              <span className="total-calories">1100</span>
+              <span className="total-calories">{remainingCalories}</span>
               <div className="calories-target">Remaining</div>
             </div>
           </div>
@@ -133,7 +152,7 @@ export default function FoodEntryCard() {
       ) : showForm ? (
         <GoalSetterComponent
           onResult={handleResultCalorie}
-          onBack={handleBackToFoodEntry} // Add the back handler here
+          onBack={handleBackToFoodEntry}
         />
       ) : (
         <div className="details-container">
@@ -169,43 +188,53 @@ export default function FoodEntryCard() {
             {selectedFood && (
               <div className="food-display">
                 <div className="food-image">
-                  <img
-                    src={selectedFood.image}
-                    alt={selectedFood.name}
-                    style={{
-                      width: "90%",
-                      height: "250px",
-                      objectFit: "cover",
-                      borderRadius: "10px",
-                      padding: "10px",
-                    }}
-                  />
+                  <img src={selectedFood.image} alt={selectedFood.name} />
                 </div>
                 <p>{selectedFood.name}</p>
                 <div className="macronutrienti">
-                  <div className="nutrient-item">
-                    <span className="value">{selectedFood.calories}</span>
-                    <span className="label">Calories</span>
+                  <div className="nutrient-items">
+                    <div className="nutrient-item">
+                      <span className="value">{selectedFood.calories}</span>
+                      <span className="label">Calories</span>
+                    </div>
+                    <div className="nutrient-item">
+                      <span className="value">
+                        {selectedFood.carbohydrates}
+                      </span>
+                      <span className="label">Carbs</span>
+                    </div>
+                    <div className="nutrient-item">
+                      <span className="value">{selectedFood.fat}</span>
+                      <span className="label">Fat</span>
+                    </div>
+                    <div className="nutrient-item">
+                      <span className="value">{selectedFood.protein}</span>
+                      <span className="label">Protein</span>
+                    </div>
                   </div>
-                  <div className="nutrient-item">
-                    <span className="value">{selectedFood.carbohydrates}</span>
-                    <span className="label">Carbs</span>
+                </div>
+                <div className="food-servings">
+                  <div className="serving-input">
+                    <span className="serving">Serving size</span>
+                    <div className="serving-size">
+                      <input
+                        type="number"
+                        value={servingSize}
+                        onChange={(e) => setServingSize(Number(e.target.value))} // Ensure serving size is a number
+                        className="serving-size-input"
+                      />
+                      <span className="serving-value">g</span>
+                    </div>
                   </div>
-                  <div className="nutrient-item">
-                    <span className="value">{selectedFood.fat}</span>
-                    <span className="label">Fat</span>
-                  </div>
-                  <div className="nutrient-item">
-                    <span className="value">{selectedFood.protein}</span>
-                    <span className="label">Protein</span>
-                  </div>
-                  <div className="food-servings">
-                    <span className="serving">serving size</span>
-                    <span className="serving-value">100g</span>
-                    <hr />
-                    <span>servings</span>
-                    <span>1</span>
-                    <hr />
+                  <hr />
+                  <div className="servings-info">
+                    <span>Servings</span>
+                    <input
+                      type="number"
+                      value={servings}
+                      onChange={(e) => setServings(Number(e.target.value))} // Ensure servings is a number
+                      className="servings-input"
+                    />
                   </div>
                 </div>
               </div>

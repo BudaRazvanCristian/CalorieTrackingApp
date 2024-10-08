@@ -15,6 +15,10 @@ export default function Navbar() {
   const handleAboutClick = () => {
     goTo("/about"); // Navigate to the PRO page
   };
+  const handleContactUsClick = () => {
+    goTo("/contact"); // Navigate to the PRO page
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-name" onClick={handleTrackNowClick}>
@@ -28,7 +32,7 @@ export default function Navbar() {
           <a onClick={handleAboutClick}>About</a>
         </li>
         <li>
-          <a href="#services">Contact</a>
+          <a onClick={handleContactUsClick}>Contact</a>
         </li>
         <li>
           <a className="hand-circle" onClick={handleProClick}>

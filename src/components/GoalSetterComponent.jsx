@@ -52,6 +52,7 @@ export default function GoalSettercomponent({ onResult, onBack }) {
         BMR: BMR.toFixed(2),
         TDEE: TDEE.toFixed(2),
         goalCalories: goalCalories.toFixed(2),
+        goalWeight: goalWeight,
       });
     }
   };
@@ -149,8 +150,7 @@ export default function GoalSettercomponent({ onResult, onBack }) {
       {result && (
         <div>
           <h3>Results</h3>
-          <p>BMR: {Math.ceil(result.BMR)} calories/day</p>
-          <p>TDEE: {Math.ceil(result.TDEE)} calories/day</p>
+
           <p>Goal Calories: {Math.ceil(result.goalCalories)} calories/day</p>
         </div>
       )}

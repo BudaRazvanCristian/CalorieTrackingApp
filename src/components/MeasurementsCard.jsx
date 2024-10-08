@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { WeightContext } from "./WeightContext";
 import "./styling/measurementsCard.scss";
-// import LinearDeterminate from "./LinearProgress";
 
 export default function MeasurementsCard() {
-  const [kgMeasure, setKgMeasure] = useState(0);
+  const [kgMeasure, setKgMeasure] = useState(60);
+  const { currWeight } = useContext(WeightContext);
 
   const handlePlusButton = () => {
     setKgMeasure(kgMeasure + 1);
@@ -33,9 +35,8 @@ export default function MeasurementsCard() {
             <span className="goal-weight-label">Goal Weight</span>
           </div>
           <div className="weight-values">
-            <p className="current-weight-value">{kgMeasure} kg</p>
+            <p className="current-weight-value">{currWeight} kg</p>
             <p className="goal-weight-value">70 kg</p>
-            {/* <LinearDeterminate /> */}
           </div>
         </div>
       </div>
