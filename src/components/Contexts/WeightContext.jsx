@@ -5,10 +5,12 @@ const WeightContext = createContext();
 
 // Create a Provider component
 const WeightProvider = ({ children }) => {
-  const [currWeight, setCurrWeight] = useState(60); // Initialize with 0
-
+  const [weight, setWeight] = useState(70);
+  const [goalWeight, setGoalWeight] = useState(65);
   return (
-    <WeightContext.Provider value={{ currWeight, setCurrWeight }}>
+    <WeightContext.Provider
+      value={{ weight, setWeight, goalWeight, setGoalWeight }}
+    >
       {children}
     </WeightContext.Provider>
   );

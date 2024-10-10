@@ -5,21 +5,40 @@ import PlanComponent from "../PlanComponent";
 import Navbar from "../Navbar";
 import AboutUs from "../pages/AboutUs";
 import Contact from "../pages/Contact";
-import { CalorieProvider } from "../CalorieContext";
+import { CalorieProvider } from "../Contexts/CalorieContext";
+import { WeightProvider } from "../Contexts/WeightContext";
+
 const AppRouter = () => {
   return (
-    <CalorieProvider>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/food-entry" element={<FoodEntry />} />
-          <Route path="/plan" element={<PlanComponent />} />
-          <Route path="/about" element={<AboutUs />} />
-        </Routes>
-      </BrowserRouter>
-    </CalorieProvider>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <CalorieProvider>
+              <WeightProvider>
+                <Home />
+              </WeightProvider>
+            </CalorieProvider>
+          }
+        />
+        <Route
+          path="/food-entry"
+          element={
+            <CalorieProvider>
+              <WeightProvider>
+                <FoodEntry />
+              </WeightProvider>
+            </CalorieProvider>
+          }
+        />
+
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/plan" element={<PlanComponent />} />
+        <Route path="/about" element={<AboutUs />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

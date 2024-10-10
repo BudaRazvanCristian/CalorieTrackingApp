@@ -3,7 +3,7 @@ import "./styling/foodEntryCard.scss";
 import GoalSetterComponent from "./GoalSetterComponent";
 import "./styling/goalSetter.scss";
 import { useContext } from "react";
-import { CalorieContext } from "./CalorieContext";
+import { CalorieContext } from "./Contexts/CalorieContext";
 
 const FoodType = {
   BREAKFAST: "Breakfast",
@@ -49,7 +49,7 @@ export default function FoodEntryCard() {
 
   useEffect(() => {
     const totalCalories = 1200; // Replace with actual value
-    const goalCalories = 1000; // Replace with actual goal
+    const goalCalories = 600; // Replace with actual goal
     setRemainingCalories(totalCalories - goalCalories); // Update remaining calories
   }, [setRemainingCalories]);
   console.log("Remaining Calories:", remainingCalories); // Add this in FoodEntryCard

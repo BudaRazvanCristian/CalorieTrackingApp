@@ -2,10 +2,11 @@ import "./styling/progressCard.scss";
 import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge";
 import { navigateTo } from "./NavigationHelper";
 import { useContext } from "react";
-import { CalorieContext } from "./CalorieContext";
+import { CalorieContext } from "./Contexts/CalorieContext";
 
 export default function ProgressCard() {
   const { remainingCalories } = useContext(CalorieContext);
+
   const goTo = navigateTo();
 
   const handleTrackNowClick = () => {

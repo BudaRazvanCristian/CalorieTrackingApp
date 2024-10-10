@@ -1,17 +1,15 @@
-import { useState } from "react";
 import { useContext } from "react";
-import { WeightContext } from "./WeightContext";
+import { WeightContext } from "./Contexts/WeightContext";
 import "./styling/measurementsCard.scss";
 
 export default function MeasurementsCard() {
-  const [kgMeasure, setKgMeasure] = useState(60);
-  const { currWeight } = useContext(WeightContext);
+  const { weight, setWeight, goalWeight } = useContext(WeightContext);
 
   const handlePlusButton = () => {
-    setKgMeasure(kgMeasure + 1);
+    setWeight(weight + 1);
   };
   const handleMinusButton = () => {
-    if (kgMeasure > 0) setKgMeasure(kgMeasure - 1);
+    if (weight > 0) setWeight(weight - 1);
   };
 
   return (
@@ -24,7 +22,7 @@ export default function MeasurementsCard() {
         <h3>Weight</h3>
         <div className="content-kg-setter">
           <button onClick={handleMinusButton}>-</button>
-          <p>{kgMeasure} kg</p>
+          <p>{weight} kg</p>
           <button onClick={handlePlusButton}>+</button>
         </div>
         <hr className="container-hr-measurements" />
@@ -35,8 +33,8 @@ export default function MeasurementsCard() {
             <span className="goal-weight-label">Goal Weight</span>
           </div>
           <div className="weight-values">
-            <p className="current-weight-value">{currWeight} kg</p>
-            <p className="goal-weight-value">70 kg</p>
+            <p className="current-weight-value">{weight} kg</p>
+            <p className="goal-weight-value">{goalWeight} kg</p>
           </div>
         </div>
       </div>

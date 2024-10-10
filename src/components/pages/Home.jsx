@@ -4,7 +4,7 @@ import Header from "../Header";
 import "../styling/home.scss";
 import MeasurementsCard from "../MeasurementsCard";
 import RecipesCard from "../RecipesCard";
-import { WeightProvider } from "../WeightContext";
+
 // Adjust based on your structure
 
 export default function Home() {
@@ -16,13 +16,13 @@ export default function Home() {
 
         <div className="container-cards">
           <ProgressCard />
+
           <RecipesCard />
 
           <div className="lower-cards-wrapper">
             <NutritionCard />
-            <WeightProvider>
-              <MeasurementsCard />
-            </WeightProvider>
+
+            <MeasurementsCard />
           </div>
         </div>
       </div>

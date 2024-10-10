@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { WeightContext } from "./Contexts/WeightContext";
 
 export default function GoalSettercomponent({ onResult, onBack }) {
-  const [weight, setWeight] = useState(70); // in kg
-  const [goalWeight, setGoalWeight] = useState(65); // goal weight
   const [height, setHeight] = useState(175); // in cm
   const [age, setAge] = useState(25); // in years
   const [gender, setGender] = useState("male"); // male or female
   const [activityLevel, setActivityLevel] = useState(1.55); // Moderately active
   const [goal, setGoal] = useState("maintain"); // maintain, lose, gain
   const [result, setResult] = useState(null);
+
+  const { weight, setWeight, goalWeight, setGoalWeight } =
+    useContext(WeightContext);
 
   const calculateBMR = () => {
     let BMR;
