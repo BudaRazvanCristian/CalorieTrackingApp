@@ -7,6 +7,8 @@ import AboutUs from "../pages/AboutUs";
 import Contact from "../pages/Contact";
 import { CalorieProvider } from "../Contexts/CalorieContext";
 import { WeightProvider } from "../Contexts/WeightContext";
+import { RemainingCalorieProvider } from "../Contexts/RemainingCalorieContext";
+import { FoodValueProvider } from "../Contexts/FoodValueContext.jsx";
 
 const AppRouter = () => {
   return (
@@ -28,7 +30,11 @@ const AppRouter = () => {
           element={
             <CalorieProvider>
               <WeightProvider>
-                <FoodEntry />
+                <RemainingCalorieProvider>
+                  <FoodValueProvider>
+                    <FoodEntry />
+                  </FoodValueProvider>
+                </RemainingCalorieProvider>
               </WeightProvider>
             </CalorieProvider>
           }

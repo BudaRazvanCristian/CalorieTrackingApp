@@ -88,6 +88,35 @@
         }
       }
     }
+    .added-foods {
+      .food-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 12px;
+        .calorie-and-button {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          button {
+            cursor: pointer;
+            color: $primary-color;
+            text-decoration: none;
+            background-color: $primary-color;
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+
+            &:hover {
+              background-color: $primary-hover-color;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
   }
 
   .breakfast-card {
@@ -206,6 +235,25 @@
     p {
       font-size: large;
       font-weight: bold;
+    }
+
+    .food-name-button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+
+      button {
+        cursor: pointer;
+        color: #4d85ff;
+        text-decoration: none;
+        background-color: #4d85ff;
+        color: white;
+        border: none;
+        padding: 4px 12px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
     }
 
     .food-image {

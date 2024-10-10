@@ -4,6 +4,7 @@ import Header from "../Header";
 import "../styling/home.scss";
 import MeasurementsCard from "../MeasurementsCard";
 import RecipesCard from "../RecipesCard";
+import { RemainingCalorieProvider } from "../Contexts/RemainingCalorieContext";
 
 // Adjust based on your structure
 
@@ -20,7 +21,9 @@ export default function Home() {
           <RecipesCard />
 
           <div className="lower-cards-wrapper">
-            <NutritionCard />
+            <RemainingCalorieProvider>
+              <NutritionCard />
+            </RemainingCalorieProvider>
 
             <MeasurementsCard />
           </div>
