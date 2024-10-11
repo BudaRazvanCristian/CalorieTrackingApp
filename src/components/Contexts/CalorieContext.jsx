@@ -9,7 +9,10 @@ const CalorieProvider = ({ children }) => {
 
   return (
     <CalorieContext.Provider
-      value={{ remainingCalories, setRemainingCalories }}
+      value={{
+        remainingCalories,
+        setRemainingCalories,
+      }}
     >
       {children}
     </CalorieContext.Provider>

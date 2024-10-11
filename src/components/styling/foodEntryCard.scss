@@ -253,6 +253,15 @@
         padding: 4px 12px;
         cursor: pointer;
         border-radius: 5px;
+
+        &:hover {
+          background-color: $primary-hover-color;
+          text-decoration: underline;
+        }
+      }
+      select {
+        padding: 4px;
+        border: none;
       }
     }
 
@@ -288,7 +297,7 @@
         }
       }
     }
-    .food-servings {
+    .servings-container {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -300,49 +309,37 @@
       background-color: #f3f3f3;
       width: 300px;
 
-      .serving-input {
+      .serving-size {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 10px;
 
-        .serving {
-          font-weight: bold;
-          font-size: 16px;
-          margin-right: 5px;
-        }
-        .serving-size {
-          display: flex;
-          justify-content: space-between;
+        label {
+          margin-right: 5px; // Spacing between label and input
         }
 
-        .serving-size-input {
+        .serving-input {
           width: 50px;
           margin-right: 5px;
-          // border: 1px solid #ccc;
           border: none;
           border-radius: 4px;
           text-align: center;
           background-color: #fefefe;
         }
-
-        .serving-value {
-          font-size: 16px;
-        }
       }
 
       .servings-info {
-        display: flex; // Flexbox for aligning servings
+        display: flex;
         align-items: center;
 
-        span {
+        label {
           margin-right: 5px; // Spacing between label and input
         }
 
         .servings-input {
           width: 50px;
           margin-right: 5px;
-          // border: 1px solid #ccc;
           border: none;
           border-radius: 4px;
           text-align: center;

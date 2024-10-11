@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import "./styling/foodEntryCard.scss";
+import "./styling/goalSetter.scss";
 import GoalSetterComponent from "./GoalSetterComponent";
 import { CalorieContext } from "./Contexts/CalorieContext";
 import { RemainingCalorieContext } from "./Contexts/RemainingCalorieContext";
@@ -20,8 +21,8 @@ export default function FoodEntryCard() {
   const [filteredData, setFilteredData] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [goalCalories, setGoalCalories] = useState(null);
-  const [servingSize, setServingSize] = useState(100); // Default serving size
-  const [servings, setServings] = useState(1); // Default servings
+  const [servingSize, setServingSize] = useState(100);
+  const [servings, setServings] = useState(1);
   const [addedFoods, setAddedFoods] = useState([]);
 
   const { remainingCalories, setRemainingCalories } =
@@ -52,11 +53,13 @@ export default function FoodEntryCard() {
 
   // Update remaining calories and goal calories
   useEffect(() => {
-    const totalCalories = 1200; // Replace with actual value
-    const goalCalories = 600; // Replace with actual goal
-    setRemainingCalories(totalCalories - goalCalories);
-    setGoalCalories(goalCalories); // Update goal calories
-  }, [setRemainingCalories]);
+    const totalCalories = addedFoods.reduce(
+      (acc, food) => acc + food.calories,
+      0
+    );
+    const effectiveGoalCalories = goalCalories !== null ? goalCalories : 0;
+    Math.ceil(setRemainingCalories(effectiveGoalCalories - totalCalories));
+  }, [addedFoods, goalCalories, setRemainingCalories]);
 
   // Event handlers
   const handleAddMoreClick = () => setShowDetails(true);
@@ -65,8 +68,8 @@ export default function FoodEntryCard() {
     setSelectedFood(food);
     setSearchTerm("");
     setFilteredData([]);
-    setServingSize(100); // Reset serving size
-    setServings(1); // Reset servings
+    setServingSize(100);
+    setServings(1);
   };
   const handleShowForm = () => setShowForm(!showForm);
   const handleBackToFoodEntry = () => {
@@ -77,27 +80,27 @@ export default function FoodEntryCard() {
     if (selectedFood) {
       const foodToAdd = {
         name: selectedFood.name,
-        calories: selectedFood.calories * (servingSize / 100) * servings, // Calculate total calories
+        calories: selectedFood.calories * (servingSize / 100) * servings,
         servingSize: servingSize,
         servings: servings,
-        type: mealType, // Assign the meal type
+        type: mealType,
       };
       setAddedFoods((prevFoods) => [...prevFoods, foodToAdd]);
       setRemainingCaloriesMeals((prev) => ({
         ...prev,
-        [mealType]: (prev[mealType] || 0) + foodToAdd.calories, // Update remaining calories for the meal type
+        [mealType]: (prev[mealType] || 0) + foodToAdd.calories,
       }));
     }
   };
   const handleDeleteFood = (index, mealType) => {
     setAddedFoods((prevFoods) => {
-      const updatedFoods = prevFoods.filter((_, i) => i !== index); // Remove food at index
-      const deletedFoodCalories = prevFoods[index].calories; // Get the calories of the deleted food
+      const updatedFoods = prevFoods.filter((_, i) => i !== index);
+      const deletedFoodCalories = prevFoods[index].calories;
       setRemainingCaloriesMeals((prev) => ({
         ...prev,
-        [mealType]: prev[mealType] - deletedFoodCalories, // Update remaining calories for the meal type
+        [mealType]: prev[mealType] - deletedFoodCalories,
       }));
-      return updatedFoods; // Return the updated food list
+      return updatedFoods;
     });
   };
 
@@ -131,10 +134,8 @@ export default function FoodEntryCard() {
                 <h4>{food.name}</h4>
                 <div className="calorie-and-button">
                   <p>{food.calories} Calories</p>
-                  {/* <p>{food.servingSize}g per serving</p>
-                <p>{food.servings} servings</p> */}
                   <button onClick={() => handleDeleteFood(index, foodType)}>
-                    Delete
+                    X
                   </button>
                 </div>
               </div>
@@ -166,12 +167,16 @@ export default function FoodEntryCard() {
               <div className="calories-target">Goal</div>
             </div>
             <div className="calories-item">
-              <span className="total-calories">1200</span>
+              <span className="total-calories">
+                {addedFoods.reduce((acc, food) => acc + food.calories, 0)}
+              </span>
               <span className="symbol">=</span>
               <div className="calories-target">Food</div>
             </div>
             <div className="calories-item">
-              <span className="total-calories">{remainingCalories}</span>
+              <span className="total-calories">
+                {Math.ceil(remainingCalories)}
+              </span>
               <div className="calories-target">Remaining</div>
             </div>
           </div>
@@ -180,7 +185,7 @@ export default function FoodEntryCard() {
         </>
       ) : showForm ? (
         <GoalSetterComponent
-          onResult={setGoalCalories}
+          onResult={(result) => setGoalCalories(result.goalCalories)} // Set goalCalories from result
           onBack={handleBackToFoodEntry}
         />
       ) : (
@@ -265,22 +270,26 @@ export default function FoodEntryCard() {
                   </div>
                 </div>
                 <div className="servings-container">
-                  <label htmlFor="serving-size">Serving Size (g):</label>
-                  <input
-                    type="number"
-                    id="serving-size"
-                    value={servingSize}
-                    onChange={(e) => setServingSize(Number(e.target.value))}
-                    className="serving-size-input"
-                  />
-                  <label htmlFor="servings">Servings:</label>
-                  <input
-                    type="number"
-                    id="servings"
-                    value={servings}
-                    onChange={(e) => setServings(Number(e.target.value))}
-                    className="servings-input"
-                  />
+                  <div className="serving-size">
+                    <label htmlFor="serving-size">Serving Size (g):</label>
+                    <input
+                      type="number"
+                      id="serving-size"
+                      value={servingSize}
+                      onChange={(e) => setServingSize(Number(e.target.value))}
+                      className="serving-input"
+                    />
+                  </div>
+                  <div className="servings-info">
+                    <label htmlFor="servings">Servings:</label>
+                    <input
+                      type="number"
+                      id="servings"
+                      value={servings}
+                      onChange={(e) => setServings(Number(e.target.value))}
+                      className="servings-input"
+                    />
+                  </div>
                 </div>
               </div>
             )}
