@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { WeightContext } from "./Contexts/WeightContext";
 
 export default function GoalSettercomponent({ onResult, onBack }) {
@@ -11,6 +11,8 @@ export default function GoalSettercomponent({ onResult, onBack }) {
 
   const { weight, setWeight, goalWeight, setGoalWeight } =
     useContext(WeightContext);
+
+  const resultRef = useRef(null);
 
   const calculateBMR = () => {
     let BMR;
@@ -56,6 +58,14 @@ export default function GoalSettercomponent({ onResult, onBack }) {
         goalCalories: goalCalories.toFixed(2),
         goalWeight: goalWeight,
       });
+    }
+
+    console.log("Scrolling to result...");
+    if (resultRef.current) {
+      console.log("Result ref found:", resultRef.current);
+      resultRef.current.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.log("Result ref not found.");
     }
   };
 
@@ -150,9 +160,8 @@ export default function GoalSettercomponent({ onResult, onBack }) {
         </div>
       </form>
       {result && (
-        <div>
+        <div ref={resultRef}>
           <h3>Results</h3>
-
           <p>Goal Calories: {Math.ceil(result.goalCalories)} calories/day</p>
         </div>
       )}
