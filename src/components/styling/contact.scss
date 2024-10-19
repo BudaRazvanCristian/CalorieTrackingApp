@@ -82,4 +82,55 @@
       margin-top: 10px;
     }
   }
+  @media (max-width: 768px) {
+    .container-title {
+      h2 {
+        font-size: $font-size-medium;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+
+    form {
+      width: 100%;
+
+      .name {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .email,
+      .message {
+        width: 100%;
+        margin: 0;
+      }
+
+      .phone {
+        .phone-input {
+          display: flex;
+          flex-direction: row;
+          max-width: 400px;
+          width: 100%;
+
+          select {
+            width: 30%;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+          }
+
+          input {
+            width: 300px;
+            border: 1px solid #ccc;
+          }
+        }
+      }
+
+      .form-button {
+        width: 100%;
+        max-width: 500px;
+      }
+    }
+  }
 }

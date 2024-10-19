@@ -24,18 +24,21 @@ export default function FoodEntryCard() {
   const [servingSize, setServingSize] = useState(100);
   const [servings, setServings] = useState(1);
   const [addedFoods, setAddedFoods] = useState([]);
-
+  
+  // Contexts for accessing remaining calorie values and managing state
+  // Context for total remaining calories
   const { remainingCalories, setRemainingCalories } =
     useContext(CalorieContext);
+  // Context for calories per meal type
   const { remainingCaloriesMeals, setRemainingCaloriesMeals } = useContext(
     RemainingCalorieContext
   );
 
-  // Fetch food data
+  // Fetch food data from a JSON file
   useEffect(() => {
     fetch("/listOfFood.json")
       .then((response) => response.json())
-      .then((data) => setFoodData(data))
+      .then((data) => setFoodData(data)) // Storing fetched data in foodData state
       .catch((error) => console.log(error));
   }, []);
 
@@ -44,6 +47,7 @@ export default function FoodEntryCard() {
     if (searchTerm === "") {
       setFilteredData([]);
     } else {
+      // Filter food data by checking if the name includes the search term
       const results = foodData.filter((item) =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
@@ -58,12 +62,14 @@ export default function FoodEntryCard() {
       0
     );
     const effectiveGoalCalories = goalCalories !== null ? goalCalories : 0;
+    // Update remaining calories based on total added calories
     Math.ceil(setRemainingCalories(effectiveGoalCalories - totalCalories));
   }, [addedFoods, goalCalories, setRemainingCalories]);
 
   // Event handlers
   const handleAddMoreClick = () => setShowDetails(true);
   const handleBackClick = () => setShowDetails(false);
+
   const handleFoodItemClick = (food) => {
     setSelectedFood(food);
     setSearchTerm("");
@@ -71,12 +77,18 @@ export default function FoodEntryCard() {
     setServingSize(100);
     setServings(1);
   };
+
+  // Toggles visibility of the goal-setting form
   const handleShowForm = () => setShowForm(!showForm);
+
+  // Hide goal-setter form/food detail
   const handleBackToFoodEntry = () => {
     setShowForm(false);
     setShowDetails(false);
   };
+
   const handleAddFood = (mealType) => {
+    // Adds selected food item to the specified meal type
     if (selectedFood) {
       const foodToAdd = {
         name: selectedFood.name,
@@ -85,6 +97,7 @@ export default function FoodEntryCard() {
         servings: servings,
         type: mealType,
       };
+      // Add food to addedFoods state
       setAddedFoods((prevFoods) => [...prevFoods, foodToAdd]);
       setRemainingCaloriesMeals((prev) => ({
         ...prev,
@@ -92,8 +105,11 @@ export default function FoodEntryCard() {
       }));
     }
   };
+
   const handleDeleteFood = (index, mealType) => {
+    // Deletes a food item from the specified meal type
     setAddedFoods((prevFoods) => {
+      // Remove food at the specified index
       const updatedFoods = prevFoods.filter((_, i) => i !== index);
       const deletedFoodCalories = prevFoods[index].calories;
       setRemainingCaloriesMeals((prev) => ({
@@ -130,6 +146,7 @@ export default function FoodEntryCard() {
         <div className="added-foods">
           {foodsForType.length > 0 ? (
             foodsForType.map((food, index) => (
+              //Display each added food item
               <div key={index} className="food-item">
                 <h4>{food.name}</h4>
                 <div className="calorie-and-button">
@@ -150,6 +167,7 @@ export default function FoodEntryCard() {
 
   return (
     <div className="food-card-container">
+      {/* Conditional rendering based on state */}
       {!showForm && !showDetails ? (
         <>
           <div className="header-card-container">
@@ -180,8 +198,11 @@ export default function FoodEntryCard() {
               <div className="calories-target">Remaining</div>
             </div>
           </div>
-
-          {Object.values(FoodType).map((foodType) => renderFoodCard(foodType))}
+          {/* Render food card */}
+          {renderFoodCard(FoodType.BREAKFAST)}
+          {renderFoodCard(FoodType.LUNCH)}
+          {renderFoodCard(FoodType.DINNER)}
+          {renderFoodCard(FoodType.SNACK)}
         </>
       ) : showForm ? (
         <GoalSetterComponent
@@ -220,6 +241,7 @@ export default function FoodEntryCard() {
           </div>
           <div>
             {selectedFood && (
+              // Show form to add selected food item
               <div className="food-display">
                 <div className="food-image">
                   <img src={selectedFood.image} alt={selectedFood.name} />
@@ -228,6 +250,7 @@ export default function FoodEntryCard() {
                   <p>{selectedFood.name}</p>
                   <select
                     value={selectedFood.mealType}
+                    // Update meal type
                     onChange={(e) =>
                       setSelectedFood({
                         ...selectedFood,
@@ -288,6 +311,7 @@ export default function FoodEntryCard() {
                       value={servings}
                       onChange={(e) => setServings(Number(e.target.value))}
                       className="servings-input"
+            
                     />
                   </div>
                 </div>

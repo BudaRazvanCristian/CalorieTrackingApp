@@ -13,37 +13,22 @@ import { FoodValueProvider } from "../Contexts/FoodValueContext.jsx";
 const AppRouter = () => {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <CalorieProvider>
-              <WeightProvider>
-                <Home />
-              </WeightProvider>
-            </CalorieProvider>
-          }
-        />
-        <Route
-          path="/food-entry"
-          element={
-            <CalorieProvider>
-              <WeightProvider>
-                <RemainingCalorieProvider>
-                  <FoodValueProvider>
-                    <FoodEntry />
-                  </FoodValueProvider>
-                </RemainingCalorieProvider>
-              </WeightProvider>
-            </CalorieProvider>
-          }
-        />
-
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/plan" element={<PlanComponent />} />
-        <Route path="/about" element={<AboutUs />} />
-      </Routes>
+      <RemainingCalorieProvider>
+        <CalorieProvider>
+          <WeightProvider>
+            <FoodValueProvider>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/food-entry" element={<FoodEntry />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/plan" element={<PlanComponent />} />
+                <Route path="/about" element={<AboutUs />} />
+              </Routes>
+            </FoodValueProvider>
+          </WeightProvider>
+        </CalorieProvider>
+      </RemainingCalorieProvider>
     </BrowserRouter>
   );
 };
