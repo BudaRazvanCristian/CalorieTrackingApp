@@ -24,7 +24,7 @@ export default function FoodEntryCard() {
   const [servingSize, setServingSize] = useState(100);
   const [servings, setServings] = useState(1);
   const [addedFoods, setAddedFoods] = useState([]);
-  
+
   // Contexts for accessing remaining calorie values and managing state
   // Context for total remaining calories
   const { remainingCalories, setRemainingCalories } =
@@ -107,15 +107,20 @@ export default function FoodEntryCard() {
   };
 
   const handleDeleteFood = (index, mealType) => {
-    // Deletes a food item from the specified meal type
     setAddedFoods((prevFoods) => {
-      // Remove food at the specified index
       const updatedFoods = prevFoods.filter((_, i) => i !== index);
-      const deletedFoodCalories = prevFoods[index].calories;
-      setRemainingCaloriesMeals((prev) => ({
-        ...prev,
-        [mealType]: prev[mealType] - deletedFoodCalories,
-      }));
+      const deletedFoodCalories = prevFoods[index].calories; // Calories of the deleted food
+
+      // Update remaining calories ensuring they don't go negative
+      setRemainingCaloriesMeals((prev) => {
+        const currentCalories = prev[mealType] || 0;
+        const newCalories = Math.max(currentCalories - deletedFoodCalories, 0); // Ensure non-negative
+        return {
+          ...prev,
+          [mealType]: newCalories,
+        };
+      });
+
       return updatedFoods;
     });
   };
@@ -311,7 +316,6 @@ export default function FoodEntryCard() {
                       value={servings}
                       onChange={(e) => setServings(Number(e.target.value))}
                       className="servings-input"
-            
                     />
                   </div>
                 </div>

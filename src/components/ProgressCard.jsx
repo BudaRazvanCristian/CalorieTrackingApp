@@ -20,7 +20,7 @@ export default function ProgressCard() {
       </div>
       <div className="card-content">
         <Gauge
-          value={remainingCalories}
+          value={Math.ceil(remainingCalories)}
           startAngle={-110}
           endAngle={110}
           sx={{
