@@ -70,14 +70,6 @@ export default function FoodEntryCard() {
   const handleAddMoreClick = () => setShowDetails(true);
   const handleBackClick = () => setShowDetails(false);
 
-  const handleFoodItemClick = (food) => {
-    setSelectedFood(food);
-    setSearchTerm("");
-    setFilteredData([]);
-    setServingSize(100);
-    setServings(1);
-  };
-
   // Toggles visibility of the goal-setting form
   const handleShowForm = () => setShowForm(!showForm);
 
@@ -87,6 +79,13 @@ export default function FoodEntryCard() {
     setShowDetails(false);
   };
 
+  const handleFoodItemClick = (food) => {
+    setSelectedFood(food);
+    setSearchTerm("");
+    setFilteredData([]);
+    setServingSize(100);
+    setServings(1);
+  };
   const handleAddFood = (mealType) => {
     // Adds selected food item to the specified meal type
     if (selectedFood) {
@@ -109,12 +108,12 @@ export default function FoodEntryCard() {
   const handleDeleteFood = (index, mealType) => {
     setAddedFoods((prevFoods) => {
       const updatedFoods = prevFoods.filter((_, i) => i !== index);
-      const deletedFoodCalories = prevFoods[index].calories; // Calories of the deleted food
-
+      const deletedFoodCalories = prevFoods[index].calories;
       // Update remaining calories ensuring they don't go negative
       setRemainingCaloriesMeals((prev) => {
         const currentCalories = prev[mealType] || 0;
-        const newCalories = Math.max(currentCalories - deletedFoodCalories, 0); // Ensure non-negative
+        // Ensure non-negative
+        const newCalories = Math.max(currentCalories - deletedFoodCalories, 0);
         return {
           ...prev,
           [mealType]: newCalories,
