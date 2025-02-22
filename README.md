@@ -1,8 +1,48 @@
-# React + Vite
+# MIVO - Calorie Tracking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MIVO is a personalized calorie tracking application designed to help users achieve their health and fitness goals. The name **"MIVO"** combines **"mi"** (suggesting "my" or personal) with **"vo"** (symbolizing "willpower" or "vitality"), reflecting a focus on individual goals and well-being.
 
-Currently, two official plugins are available:
+## 🚀 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✔ **Daily Calorie Tracking** – Users can log and monitor their daily calorie intake, gaining a clear understanding of their eating habits.
+- ✔ **Modern UI/UX** – A clean and intuitive interface for seamless user experience.
+- ✔ **React & Vite Powered** – Built with React and Vite for fast performance and smooth development.
+- ✔ **SCSS Styling** – Modular and maintainable SCSS styles for better customization.
+- ✔ **Performance Optimized** – Uses Vite’s fast bundling and hot module replacement for a smooth experience.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React, Vite, JavaScript/TypeScript
+- **Styling**: SCSS, Tailwind CSS
+- **State Management**: React Context API / Redux (if applicable)
+- **Backend**: Firebase / Node.js (mention if used)
+- **Deployment**: Vercel / Netlify / GitHub Pages
+
+## 📸 Screenshots
+
+Include screenshots of your app here to showcase its UI.
+
+Example:
+
+![MIVO Screenshot](https://imgur.com/1C6UKEw)
+![MIVO Screenshot](https://imgur.com/IN2NFIK)
+![MIVO Screenshot](https://imgur.com/mxa7aLc)
+![MIVO Screenshot](https://imgur.com/kkFGBKf)
+![MIVO Screenshot](https://imgur.com/SZBtUdU)
+
+
+## 🛠️ Installation & Setup
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/BudaRazvanCristian/CalorieTrackingApp.git
+   cd CalorieTrackingApp
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Start the development server:
+   ```sh
+   npm run dev
+   
