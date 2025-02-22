@@ -24,11 +24,12 @@ Include screenshots of your app here to showcase its UI.
 
 Example:
 
-![MIVO Screenshot](https://imgur.com/1C6UKEw)
-![MIVO Screenshot](https://imgur.com/IN2NFIK)
-![MIVO Screenshot](https://imgur.com/mxa7aLc)
-![MIVO Screenshot](https://imgur.com/kkFGBKf)
-![MIVO Screenshot](https://imgur.com/SZBtUdU)
+![MIVO HomePage](https://i.imgur.com/1C6UKEw.png)
+![MIVO Diary](https://i.imgur.com/IN2NFIK.png)
+![MIVO CalorieGoal Setter](https://i.imgur.com/mxa7aLc.png)
+![MIVO FoodAdd](https://i.imgur.com/kkFGBKf.png)
+![MIVO ManageFoodSelection](https://i.imgur.com/SZBtUdU.png)
+
 
 
 ## 🛠️ Installation & Setup
