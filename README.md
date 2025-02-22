@@ -12,17 +12,16 @@ MIVO is a personalized calorie tracking application designed to help users achie
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React, Vite, JavaScript/TypeScript
-- **Styling**: SCSS, Tailwind CSS
-- **State Management**: React Context API / Redux (if applicable)
-- **Backend**: Firebase / Node.js (mention if used)
-- **Deployment**: Vercel / Netlify / GitHub Pages
+- **Frontend**: React, Vite, JavaScript
+- **Styling**: SCSS
+- **State Management**: React Context API 
+- **Backend**: Node.js
+
 
 ## 📸 Screenshots
 
-Include screenshots of your app here to showcase its UI.
+MIVO application screenshots:
 
-Example:
 
 ![MIVO HomePage](https://i.imgur.com/1C6UKEw.png)
 ![MIVO Diary](https://i.imgur.com/IN2NFIK.png)
